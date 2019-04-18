@@ -16,4 +16,10 @@ server.get('/hobbits', async (req, res) => {
   res.status(200).json(rows);
 });
 
+// listen should be in separate file
+
+// server.listen('9090', () => {
+//   console.log('listening... ')
+// })
+
 module.exports = server;

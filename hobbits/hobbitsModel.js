@@ -1,3 +1,8 @@
+// this is more of specific functions and methods for specific sources 
+// this is compared to the dbConfig.js file
+
+// testing would require both files
+
 const db = require('../data/dbConfig.js');
 
 module.exports = {
@@ -9,11 +14,17 @@ module.exports = {
 };
 
 async function insert(hobbit) {
-  return null;
+  const [id] = await db('hobbits').insert(hobbit);
+
+  return db('hobbits')
+  .where({ id })
+  .first();
 }
 
 async function update(id, changes) {
-  return null;
+
+ await db('hobbits').where({ id }).update(changes)
+  return db('hobbits').where({ id }).first()
 }
 
 function remove(id) {
@@ -25,5 +36,7 @@ function getAll() {
 }
 
 function findById(id) {
-  return null;
+  return db('hobbits')
+    .where({ id })
+    .first();
 }
